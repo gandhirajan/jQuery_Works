@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Test Count</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		var count = 1;
+		$('input[type="checkbox"]').change(function(event) {
+			if(event.target.checked == true) {
+				var checkBoxId = event.target.id;
+				$("#t"+checkBoxId).val(count);
+				$("#t"+checkBoxId).attr("dataval",count);
+				count ++;
+			} else {
+				var checkBoxId = event.target.id;
+				var currentCount = $("#t"+checkBoxId).val();
+				$("#t"+checkBoxId).val("");
+				$("#t"+checkBoxId).attr("dataval","");
+
+				while(currentCount < count-1) {
+					var nextCount = parseInt(currentCount) + parseInt(1);
+					var nextField = $("input[dataval="+nextCount+"]")[0];
+					nextField.value = currentCount;
+					nextField.setAttribute("dataval",currentCount);
+					currentCount++;
+				}
+				count = currentCount;
+			}
+			
+		});
+	});
+</script>
+</head>
+<body>
+<form>
+<table>
+<tr><td><input type="checkbox" id="1"></td><td><input type="text" id="t1"></td></tr>
+<tr><td><input type="checkbox" id="2"></td><td><input type="text" id="t2"></td></tr>
+<tr><td><input type="checkbox" id="3"></td><td><input type="text" id="t3"></td></tr>
+<tr><td><input type="checkbox" id="4"></td><td><input type="text" id="t4"></td></tr>
+<tr><td><input type="checkbox" id="5"></td><td><input type="text" id="t5"></td></tr>
+<tr><td><input type="checkbox" id="6"></td><td><input type="text" id="t6"></td></tr>
+</table>
+</form>
+</body>
+</html>
