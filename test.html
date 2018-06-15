@@ -10,13 +10,14 @@
 				var checkBoxId = event.target.id;
 				$("#t"+checkBoxId).val(count);
 				$("#t"+checkBoxId).attr("dataval",count);
+				$("#t"+checkBoxId).attr("disabled","disabled");
 				count ++;
 			} else {
 				var checkBoxId = event.target.id;
 				var currentCount = $("#t"+checkBoxId).val();
 				$("#t"+checkBoxId).val("");
 				$("#t"+checkBoxId).attr("dataval","");
-
+				$("#t"+checkBoxId).removeAttr("disabled");
 				while(currentCount < count-1) {
 					var nextCount = parseInt(currentCount) + parseInt(1);
 					var nextField = $("input[dataval="+nextCount+"]")[0];
