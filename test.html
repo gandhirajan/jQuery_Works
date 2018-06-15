@@ -10,13 +10,16 @@
 				var checkBoxId = event.target.id;
 				$("#t"+checkBoxId).val(count);
 				$("#t"+checkBoxId).attr("dataval",count);
+				$("#t"+checkBoxId).attr("disabled","disabled");
+
+
 				count ++;
 			} else {
 				var checkBoxId = event.target.id;
 				var currentCount = $("#t"+checkBoxId).val();
 				$("#t"+checkBoxId).val("");
 				$("#t"+checkBoxId).attr("dataval","");
-
+				$("#t"+checkBoxId).removeAttr("disabled");
 				while(currentCount < count-1) {
 					var nextCount = parseInt(currentCount) + parseInt(1);
 					var nextField = $("input[dataval="+nextCount+"]")[0];
@@ -27,6 +30,27 @@
 				count = currentCount;
 			}
 			
+		});
+
+		$('input[type="text"]').blur(function(event) {
+			var textBoxId = event.target.id;
+			var textBoxCount = $("#"+textBoxId).val();
+			if(textBoxCount=="" || isNaN(textBoxCount)) {
+				return;
+			}
+			while(textBoxCount < count) {
+				var nextCount = parseInt(textBoxCount) + parseInt(1);
+				var nextField = $("input[dataval="+textBoxCount+"]")[0];
+				nextField.value = nextCount;	
+				textBoxCount++;
+			}
+			var i=1;
+			while (i<=count)
+			{
+				var textBoxVal = $("#t"+i).val();
+				$("#t"+i).attr("dataval",textBoxVal);
+				i++;
+			}
 		});
 	});
 </script>
