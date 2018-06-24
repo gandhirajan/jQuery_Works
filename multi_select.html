@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Multi Select</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#button').click(function() {
+			alert($("#sel").val());
+		});
+	});
+</script>
+</head>
+<body>
+<form>
+<table>
+<tr><td>
+<select multiple id="sel">
+  <option value="o1">Option1</option>
+  <option value="o2">Option2</option>
+  <option value="o3">Option3</option>
+  <option value="04">Option4</option>
+</select>
+</td></tr>
+<tr><td>
+<input type="button" value="submit" id="button" />
+</td></tr>
+</table>
+</form>
+</body>
+</html>
