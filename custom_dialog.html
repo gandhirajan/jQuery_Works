@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Custom Dialog</title>
+<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+<link href="jquery-ui.css" rel="stylesheet"/>
+<script>
+$( document ).ready(function() {
+function displayDialog() {
+  $("#dialogDiv").html("Do you want to confirm?");
+
+  // Define the Dialog and its properties.
+  $("#dialogDiv").dialog({
+    resizable: false,
+    modal: true,
+    title: "Confirmation",
+    height: 250,
+    width: 400,
+    buttons: {
+      "Yes": function() {
+        $(this).dialog('close');
+        alert("Confirmed");
+      },
+      "No": function() {
+        $(this).dialog('close');
+        alert("Not confirmed");
+      }
+    }
+  });
+};
+
+$('#selection').click(displayDialog); 
+});
+</script>
+</head>
+<body>
+<input type="button" id="selection" value="Confirm your selection?" />
+<div id="dialogDiv"></div>
+</body>
+</html>
